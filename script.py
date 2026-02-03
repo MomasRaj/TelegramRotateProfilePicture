@@ -7,25 +7,29 @@ import os
 from PIL import Image
 
 apiId = 123456
-apiHash = "Your api apiHash"
+apiHash = "Your api key"
 
 #The name of your photos, put them on a folder called photos.
 path = "pfp.jpg"
 pathRotated = "pfpRotated.jpg"
 
-async def main():
-    hour = datetime.now().hour
-    degrees = -((hour*30)%360)
-    img = Image.open(path)
-    img = img.rotate(degrees, expand=True)
-    img.save(pathRotated)
-    
-    async with telethon.TelegramClient("session", apiId, apiHash) as client:
-        current = await client.get_profile_photos("me", limit=1)
-        if current:
-            await client(DeletePhotosRequest(current))
-        uploaded = await client.upload_file(pathRotated)
 
-        await client(UploadProfilePhotoRequest(file=uploaded))
+async def main():
+    async with telethon.TelegramClient("session", apiId, apiHash) as client:
+        while True:
+            now = datetime.now()
+            nextHour = (now + timedelta(hours=1)).replace(minute=0, second=0, microsecond=0)
+            await asyncio.sleep((nextHour - now).total_seconds())
+            hour = datetime.now().hour
+            degrees = -((hour * 30) % 360)
+            img = Image.open(path)
+            img = img.rotate(degrees)
+            img.save(pathRotated)
+            current = await client.get_profile_photos("me", limit=1)
+            if current:
+                await client(DeletePhotosRequest(current))
+
+            uploaded = await client.upload_file(pathRotated)
+            await client(UploadProfilePhotoRequest(file=uploaded))
 
 asyncio.run(main())
