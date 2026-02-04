@@ -2,7 +2,7 @@ import asyncio
 import telethon
 from telethon.tl.functions.photos import DeletePhotosRequest
 from telethon.tl.functions.photos import UploadProfilePhotoRequest
-from datetime import datetime
+from datetime import datetime, timedelta
 import os
 from PIL import Image
 
