@@ -16,11 +16,11 @@ You can run it on your **local PC** or on a **VM**.
 ---
 
 ## Requirements
-```yaml
+
 - Python **3.9+**
 - Telegram API credentials (`apiId`, `apiHash`)
 - Telethon session file already authenticated
-```
+
 ### Python dependencies
 ```yaml
 telethon>=1.30.0
