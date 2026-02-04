@@ -7,9 +7,9 @@ import os
 from PIL import Image
 
 apiId = 123456
-apiHash = "Your api key"
+apiHash = "YOUR_API_KEY"
 
-#The name of your photos, put them on a folder called photos.
+#Photos
 path = "pfp.jpg"
 pathRotated = "pfpRotated.jpg"
 
