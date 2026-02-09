@@ -1,4 +1,5 @@
-# RotateProfilePicTg
+# TelegramRotateProfilePicture
+
 This project automatically updates a Telegram profile picture **exactly at the start of every hour** by 30 degrees.
 
 You can run it on your **local PC** or on a **VM**.
